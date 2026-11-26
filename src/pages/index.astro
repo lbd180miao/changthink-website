@@ -10,10 +10,41 @@ const icons: Record<string, string> = {
 };
 
 const businessAreas = [
-	{ title: '机器视觉', desc: '目标检测、缺陷检测、智能识别', icon: 'eye' },
-	{ title: '数据采集', desc: '2D/3D相机、深度相机、雷达、光色仪', icon: 'activity' },
-	{ title: '数据分析', desc: '机器学习、深度学习、数据挖掘', icon: 'bar-chart' },
-	{ title: '管理系统', desc: 'MES、设备管理、生产管理、自动排产', icon: 'grid' },
+	{ title: '机器视觉', desc: '目标检测、缺陷检测、智能识别与 PLC/MES 联动', icon: 'eye', href: '/solutions#vision' },
+	{ title: '数据采集', desc: '2D/3D相机、深度相机、雷达、光色仪插件化采集', icon: 'activity', href: '/solutions#acquisition' },
+	{ title: '数据分析', desc: '机器学习、深度学习与工艺曲线质量挖掘', icon: 'bar-chart', href: '/solutions#analysis' },
+	{ title: '管理系统', desc: 'MES、FMS 设备管理、Ignition 产线监控与自动排产', icon: 'grid', href: '/solutions#management' },
+];
+
+const featuredCases = [
+	{
+		tag: '智能排产软件',
+		title: '涂装生产计划自动生成系统',
+		desc: '综合换色成本、产线节拍与订单交期，一键自动生成可执行涂装排产计划，显著降低清洗损耗。',
+		href: '/products#painting-plan',
+		cta: '了解产品与体验入口',
+	},
+	{
+		tag: '机器视觉 · 深度学习',
+		title: '延锋能力中心与装货视觉检测',
+		desc: '融合深度学习、OpenCV 与海康威视 VM，联动 PLC/MES 完成行为识别与产线装货实时防错。',
+		href: '/solutions#vision',
+		cta: '查看视觉方案',
+	},
+	{
+		tag: '数据采集 · EOL',
+		title: 'EOL 多源工业传感器采集项目',
+		desc: '插件化接入工业 2D/3D 相机、深度相机与光色仪，为下线质量检测提供高可靠实时数据底座。',
+		href: '/solutions#acquisition',
+		cta: '查看采集方案',
+	},
+	{
+		tag: '数据分析 · 产线系统',
+		title: '超声波焊接包络线分析 & Ignition 产线集成',
+		desc: '以机器学习判别焊接曲线质量，并结合 Ignition 与 Web 平台打造透明化制造运营系统。',
+		href: '/solutions#analysis',
+		cta: '查看分析与管理方案',
+	},
 ];
 ---
 
@@ -31,14 +62,20 @@ const businessAreas = [
 				</p>
 				<div class="mt-8 flex flex-wrap gap-4">
 					<a
-						href="/solutions"
+						href="/products"
 						class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+					>
+						浏览产品中心
+					</a>
+					<a
+						href="/solutions"
+						class="inline-flex items-center border border-blue-400/40 hover:border-blue-400/80 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200"
 					>
 						了解解决方案
 					</a>
 					<a
-						href="/about#contact"
-						class="inline-flex items-center border border-blue-400/30 hover:border-blue-400/60 text-blue-200 hover:text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+						href="/contact"
+						class="inline-flex items-center border border-white/20 hover:border-white/50 text-blue-200 hover:text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200"
 					>
 						联系我们
 					</a>
@@ -62,21 +99,73 @@ const businessAreas = [
 
 			<div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 				{businessAreas.map((area) => (
-					<ViewfinderCard class="border border-slate-200 rounded-xl p-6 bg-white hover:shadow-lg hover:border-blue-200 transition-all duration-300">
-						<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 text-blue-500 mb-4" set:html={icons[area.icon]} />
-						<h3 class="font-semibold text-slate-900">{area.title}</h3>
-						<p class="mt-2 text-sm text-slate-500 leading-relaxed">{area.desc}</p>
+					<a href={area.href} class="block group">
+						<ViewfinderCard class="h-full border border-slate-200 rounded-xl p-6 bg-white hover:shadow-lg hover:border-blue-200 transition-all duration-300">
+							<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 text-blue-500 mb-4" set:html={icons[area.icon]} />
+							<h3 class="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">{area.title}</h3>
+							<p class="mt-2 text-sm text-slate-500 leading-relaxed">{area.desc}</p>
+						</ViewfinderCard>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 代表性案例与产品亮点 -->
+	<section class="py-16 lg:py-24 bg-slate-50">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<div class="text-center max-w-2xl mx-auto">
+				<h2 class="text-2xl lg:text-3xl font-bold text-slate-900">典型案例与产品实践</h2>
+				<p class="mt-2 text-slate-500">源自真实制造场景的软件产品与产线落地项目</p>
+			</div>
+
+			<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+				{featuredCases.map((item) => (
+					<ViewfinderCard class="border border-slate-200 rounded-xl p-7 bg-white hover:shadow-lg hover:border-blue-200 transition-all duration-300 flex flex-col">
+						<span class="inline-block w-fit px-2.5 py-1 text-xs font-medium rounded-md bg-blue-50 text-blue-600">
+							{item.tag}
+						</span>
+						<h3 class="mt-4 text-xl font-semibold text-slate-900">{item.title}</h3>
+						<p class="mt-2.5 text-sm text-slate-600 leading-relaxed flex-1">{item.desc}</p>
+						<a
+							href={item.href}
+							class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors duration-200"
+						>
+							{item.cta}
+							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M5 12h14" />
+								<path d="m12 5 7 7-7 7" />
+							</svg>
+						</a>
 					</ViewfinderCard>
 				))}
 			</div>
 		</div>
 	</section>
 
-	<!-- 代表性案例 -->
-	<section class="py-16 lg:py-24 bg-slate-50">
-		<div class="max-w-7xl mx-auto px-4 lg:px-8">
-			<h2 class="text-2xl lg:text-3xl font-bold text-slate-900 text-center">典型案例</h2>
-			<!-- TODO: 案例展示 -->
+	<!-- 底部 B2B 转化横幅 -->
+	<section class="py-16 bg-slate-900 text-white">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+			<div>
+				<h2 class="text-2xl lg:text-3xl font-bold">开启您的工业智能升级</h2>
+				<p class="mt-2 text-sm text-slate-300 max-w-xl">
+					预约软件体验、获取免费场景可行性评估，或直接与我们的技术团队探讨您的产线需求。
+				</p>
+			</div>
+			<div class="flex flex-wrap gap-3 shrink-0">
+				<a
+					href="/products"
+					class="inline-flex items-center bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+				>
+					探索产品中心
+				</a>
+				<a
+					href="/contact"
+					class="inline-flex items-center border border-slate-600 hover:border-white text-white text-sm font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+				>
+					联系我们
+				</a>
+			</div>
 		</div>
 	</section>
 </Layout>

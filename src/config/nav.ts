@@ -14,6 +14,10 @@ export interface NavItem {
 
 export const navItems: NavItem[] = [
 	{
+		href: '/',
+		label: '首页',
+	},
+	{
 		href: '/tech',
 		label: '技术能力',
 		megaMenu: {
@@ -71,6 +75,35 @@ export const navItems: NavItem[] = [
 		},
 	},
 	{
+		href: '/products',
+		label: '产品',
+		megaMenu: {
+			columns: [
+				{
+					title: '智能制造软件',
+					items: [
+						{ label: '涂装生产计划自动生成系统', href: '/products#painting-plan' },
+						{ label: 'FMS 柔性产线管理系统', href: '/products#fms' },
+					],
+				},
+				{
+					title: 'AI 与视觉平台',
+					items: [
+						{ label: 'AI 标注·训练·推理一体平台', href: '/products#ai-vision-platform' },
+						{ label: '工业视觉检测软件套件', href: '/products#vision-suite' },
+					],
+				},
+				{
+					title: '工业采集组件',
+					items: [
+						{ label: 'EOL 多源数据采集插件', href: '/products#eol-plugin' },
+					],
+				},
+			],
+			footerLink: { label: '查看全部产品与试用入口', href: '/products' },
+		},
+	},
+	{
 		href: '/solutions',
 		label: '解决方案',
 		megaMenu: {
@@ -124,14 +157,14 @@ export const navItems: NavItem[] = [
 					],
 				},
 				{
-					title: '联系方式',
+					title: '商务与联系',
 					items: [
+						{ label: '预约产品演示', href: '/contact' },
 						{ label: 'contact@changthink.com', href: 'mailto:contact@changthink.com' },
-						{ label: '地址待补充', href: '/about#contact' },
 					],
 				},
 			],
-			footerLink: { label: '了解更多', href: '/about' },
+			footerLink: { label: '进入联系我们', href: '/contact' },
 		},
 	},
 ];

@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ViewfinderCard from '../components/ViewfinderCard.astro';
+
+const consultationPaths = [
+	{
+		step: '01',
+		title: '产品试用与报价咨询',
+		desc: '了解涂装生产计划自动生成系统、AI 标注训练平台等产品的试用方式、授权模式与价格方案。',
+		actionLabel: '邮件预约产品演示',
+		href: 'mailto:contact@changthink.com?subject=产品试用与报价咨询',
+	},
+	{
+		step: '02',
+		title: '产线方案可行性评估',
+		desc: '针对机器视觉缺陷检测、多源传感器采集、焊接质量分析或 MES/Ignition 改造，提供前期技术评估。',
+		actionLabel: '提交场景评估需求',
+		href: 'mailto:contact@changthink.com?subject=工业方案可行性评估',
+	},
+	{
+		step: '03',
+		title: '技术支持与生态合作',
+		desc: '面向现有客户的技术支持服务，以及设备集成商、自动化伙伴的联合项目合作洽谈。',
+		actionLabel: '联系技术与商务团队',
+		href: 'mailto:contact@changthink.com?subject=技术支持与商务合作',
+	},
+];
+---
+
+<Layout
+	title="联系我们 - 炎想科技"
+	description="联系炎想科技，预约产品演示、获取工业视觉与智能排产方案的可行性评估与技术支持。"
+>
+	<!-- 页面标题 -->
+	<section class="relative overflow-hidden bg-gradient-to-br from-blue-950 via-indigo-950 to-slate-900 text-white py-16 lg:py-24">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-200 border border-blue-400/30">
+				Contact Us
+			</span>
+			<h1 class="mt-4 text-3xl lg:text-5xl font-bold tracking-tight">联系我们</h1>
+			<p class="mt-4 text-lg text-blue-100/80 max-w-2xl leading-relaxed">
+				无论您想体验我们的工业软件、评估产线视觉检测可行性，还是探讨项目合作，都欢迎与炎想科技团队直接沟通。
+			</p>
+		</div>
+	</section>
+
+	<!-- 主体联系区域 -->
+	<section class="py-16 lg:py-24 bg-white">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+				<!-- 左侧：直接联系方式与企业微信位 -->
+				<div class="lg:col-span-5 space-y-6">
+					<div>
+						<h2 class="text-2xl font-bold text-slate-900">直接联系渠道</h2>
+						<p class="mt-2 text-sm text-slate-500 leading-relaxed">
+							工作日 09:00 - 18:00 快速响应，技术顾问直接对接您的需求。
+						</p>
+					</div>
+
+					<div class="space-y-4">
+						<div class="flex items-start gap-4 p-4 rounded-xl border border-slate-200 bg-slate-50/60">
+							<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 text-blue-600 shrink-0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<rect width="20" height="16" x="2" y="4" rx="2" />
+									<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+								</svg>
+							</div>
+							<div>
+								<div class="text-xs font-medium text-slate-400">商务与技术邮箱</div>
+								<a href="mailto:contact@changthink.com" class="mt-0.5 block font-semibold text-slate-900 hover:text-blue-600 transition-colors">
+									contact@changthink.com
+								</a>
+							</div>
+						</div>
+
+						<div class="flex items-start gap-4 p-4 rounded-xl border border-slate-200 bg-slate-50/60">
+							<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 text-blue-600 shrink-0">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+									<circle cx="12" cy="10" r="3" />
+								</svg>
+							</div>
+							<div>
+								<div class="text-xs font-medium text-slate-400">公司地址</div>
+								<p class="mt-0.5 font-medium text-slate-700">地址待补充</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 企业微信 / 客服二维码预留位 -->
+					<div class="rounded-xl border border-dashed border-blue-200 bg-blue-50/30 p-6">
+						<div class="flex items-center gap-4">
+							<div class="w-20 h-20 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-xs text-slate-400 text-center px-2 shrink-0">
+								企微二维码<br />待替换
+							</div>
+							<div>
+								<h3 class="font-semibold text-slate-900">企业微信在线顾问</h3>
+								<p class="mt-1 text-sm text-slate-600 leading-relaxed">
+									后续将放置官方企业微信二维码及在线 AI / 人工客服入口，扫码即可直连技术支持。
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 右侧：按业务场景快速对接 -->
+				<div class="lg:col-span-7">
+					<h2 class="text-2xl font-bold text-slate-900">我们能为您提供什么帮助？</h2>
+					<p class="mt-2 text-sm text-slate-500">
+						根据您的实际需求选择对应方向，帮助我们更快安排合适领域的工程师与您沟通。
+					</p>
+
+					<div class="mt-6 space-y-4">
+						{consultationPaths.map((item) => (
+							<ViewfinderCard class="border border-slate-200 rounded-xl p-6 bg-white hover:shadow-md hover:border-blue-200 transition-all duration-300">
+								<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+									<div class="max-w-xl">
+										<div class="flex items-center gap-2.5">
+											<span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
+												{item.step}
+											</span>
+											<h3 class="text-lg font-semibold text-slate-900">{item.title}</h3>
+										</div>
+										<p class="mt-2 text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+									</div>
+									<a
+										href={item.href}
+										class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white shrink-0 transition-colors duration-200"
+									>
+										{item.actionLabel}
+									</a>
+								</div>
+							</ViewfinderCard>
+						))}
+					</div>
+
+					<!-- 沟通准备清单提示 -->
+					<div class="mt-8 rounded-xl bg-slate-50 border border-slate-200 p-6">
+						<h3 class="text-sm font-semibold text-slate-900">为了让首次技术沟通更高效，建议您提前准备：</h3>
+						<ul class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm text-slate-600">
+							<li class="flex items-center gap-2">
+								<span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+								应用场景或期望解决的痛点
+							</li>
+							<li class="flex items-center gap-2">
+								<span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+								产线节拍、精度或计划排产约束要求
+							</li>
+							<li class="flex items-center gap-2">
+								<span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+								现有硬件/PLC/MES 系统情况
+							</li>
+							<li class="flex items-center gap-2">
+								<span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+								期望的验证或项目交付时间周期
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

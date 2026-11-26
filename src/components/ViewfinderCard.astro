@@ -1,10 +1,11 @@
 ---
 interface Props {
+	id?: string;
 	class?: string;
 }
-const { class: className = '' } = Astro.props;
+const { id, class: className = '' } = Astro.props;
 ---
-<div class:list={['viewfinder-card', className]}>
+<div id={id} class:list={['viewfinder-card', className]}>
 	<span class="vf-corner vf-tl" aria-hidden="true"></span>
 	<span class="vf-corner vf-tr" aria-hidden="true"></span>
 	<span class="vf-corner vf-bl" aria-hidden="true"></span>

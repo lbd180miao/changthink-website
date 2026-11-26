@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import { navItems } from '../config/nav';
 import logoImg from '../assets/logo.png';
 
 const currentPath = Astro.url.pathname;
 
 const isActive = (href: string) => {
+	if (href === '/') return currentPath === '/';
 	return currentPath === href || currentPath.startsWith(href + '/');
 };
 ---
@@ -17,7 +19,7 @@ const isActive = (href: string) => {
 		<!-- Logo -->
 		<div class="navbar-start">
 			<a href="/" class="flex items-center gap-2 shrink-0">
-				<img src={logoImg.src} alt="炎想科技" class="h-12 w-auto" />
+				<Image src={logoImg} alt="炎想科技" class="h-12 w-auto" />
 			</a>
 		</div>
 
@@ -79,8 +81,13 @@ const isActive = (href: string) => {
 		<!-- CTA 按钮 + 移动端菜单 -->
 		<div class="navbar-end flex items-center gap-3">
 			<a
-				href="/about#contact"
-				class="hidden lg:inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors duration-200"
+				href="/contact"
+				class:list={[
+					'hidden lg:inline-flex items-center text-sm font-medium px-5 py-2.5 rounded-lg transition-colors duration-200',
+					isActive('/contact')
+						? 'bg-blue-700 text-white ring-2 ring-blue-300'
+						: 'bg-blue-600 hover:bg-blue-700 text-white',
+				]}
 			>
 				联系我们
 			</a>
@@ -140,7 +147,7 @@ const isActive = (href: string) => {
 					<li class="my-1"><hr class="border-slate-100" /></li>
 					<li>
 						<a
-							href="/about#contact"
+							href="/contact"
 							class="rounded-lg bg-blue-600 text-white text-center font-medium hover:bg-blue-700"
 						>
 							联系我们

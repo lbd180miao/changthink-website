@@ -1,48 +1,94 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ViewfinderCard from '../components/ViewfinderCard.astro';
+
+const advantages = [
+	{
+		num: '01',
+		title: '工业视觉与 AI 算法深耕',
+		desc: '兼顾深度学习与传统机器视觉（OpenCV / 海康 VM），针对复杂反光、微小缺陷与多变产线工况提供高鲁棒性识别与检测能力。',
+	},
+	{
+		num: '02',
+		title: '从底层传感到上层系统全链路打通',
+		desc: '打通 2D/3D 相机、传感器采集、PLC 通讯、MES/Ignition 产线集成与自动排产软件，避免多供应商割裂导致的集成难题。',
+	},
+	{
+		num: '03',
+		title: '真实工业现场项目验证',
+		desc: '在汽车零部件、产线质检、EOL 下线测试、焊接质量分析与柔性制造管理等严苛场景中持续交付并稳定运行。',
+	},
+	{
+		num: '04',
+		title: '模块化软件与敏捷交付',
+		desc: '沉淀可复用的标准软件组件与插件架构，兼顾快速验证上线与企业深度定制需求，让智能化投入看得见回报。',
+	},
+];
 ---
 
-<Layout title="关于我们 - 炎想科技" description="关于炎想科技，专注工业智能解决方案，联系方式与商务合作。">
+<Layout title="关于我们 - 炎想科技" description="关于炎想科技，专注工业智能解决方案，核心优势与商务联系。">
 	<!-- 公司简介 -->
-	<section class="py-16 lg:py-24">
+	<section class="relative overflow-hidden bg-gradient-to-br from-blue-950 via-indigo-950 to-slate-900 text-white py-16 lg:py-24">
 		<div class="max-w-7xl mx-auto px-4 lg:px-8">
-			<h1 class="text-3xl lg:text-4xl font-bold text-slate-900">关于我们</h1>
-			<p class="mt-3 text-lg text-slate-500 max-w-3xl">
-				<!-- TODO: 公司介绍 -->
-				炎想科技，专注工业智能解决方案。
+			<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-200 border border-blue-400/30">
+				About Changthink
+			</span>
+			<h1 class="mt-4 text-3xl lg:text-5xl font-bold tracking-tight">关于炎想科技</h1>
+			<p class="mt-4 text-lg text-blue-100/80 max-w-3xl leading-relaxed">
+				炎想科技专注工业智能与智能制造领域，以计算机视觉、多源工业数据采集、机器学习质量分析与智能排产软件为核心，致力于为制造企业打造从“感知”到“决策”的可靠数字化基础设施。
 			</p>
 		</div>
 	</section>
 
-	<!-- 团队 / 优势 -->
-	<section class="py-16 lg:py-24 bg-slate-50">
+	<!-- 核心优势 -->
+	<section id="advantages" class="scroll-mt-24 py-16 lg:py-24 bg-slate-50">
 		<div class="max-w-7xl mx-auto px-4 lg:px-8">
-			<h2 class="text-2xl font-bold text-slate-900">核心优势</h2>
-			<!-- TODO: 团队背景、技术优势、合作伙伴 -->
+			<div class="max-w-2xl">
+				<h2 class="text-2xl lg:text-3xl font-bold text-slate-900">核心优势</h2>
+				<p class="mt-2 text-slate-500">以工程落地为导向，让前沿算法真正服务于稳定高效的工业现场。</p>
+			</div>
+
+			<div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+				{advantages.map((item) => (
+					<ViewfinderCard class="border border-slate-200 rounded-xl p-7 bg-white hover:shadow-md hover:border-blue-200 transition-all duration-300">
+						<span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded">
+							{item.num}
+						</span>
+						<h3 class="mt-4 text-lg font-semibold text-slate-900">{item.title}</h3>
+						<p class="mt-2 text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+					</ViewfinderCard>
+				))}
+			</div>
 		</div>
 	</section>
 
-	<!-- 联系我们 -->
-	<section id="contact" class="py-16 lg:py-24">
+	<!-- 联系我们引导（保留 #contact 锚点兼容旧链接） -->
+	<section id="contact" class="scroll-mt-24 py-16 lg:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4 lg:px-8">
-			<h2 class="text-2xl font-bold text-slate-900">联系我们</h2>
-			<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-				<div>
-					<h3 class="font-semibold text-slate-900">联系方式</h3>
-					<ul class="mt-4 space-y-3">
-						<li class="flex items-center gap-2.5 text-slate-600">
-							<!-- TODO: 邮箱 -->
-							contact@changthink.com
-						</li>
-						<li class="flex items-center gap-2.5 text-slate-600">
-							<!-- TODO: 地址 -->
-							地址待补充
-						</li>
-					</ul>
+			<div class="rounded-2xl border border-slate-200 bg-slate-50 p-8 lg:p-12 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+				<div class="max-w-2xl">
+					<h2 class="text-2xl lg:text-3xl font-bold text-slate-900">与炎想科技开启合作</h2>
+					<p class="mt-3 text-slate-600 leading-relaxed">
+						如需了解软件产品试用、获取产线视觉与排产方案评估，或探讨商务合作，欢迎前往「联系我们」页面直接对接。
+					</p>
+					<div class="mt-5 flex flex-wrap gap-6 text-sm text-slate-600">
+						<span>邮箱：contact@changthink.com</span>
+						<span>地址：地址待补充</span>
+					</div>
 				</div>
-				<div>
-					<h3 class="font-semibold text-slate-900">商务合作</h3>
-					<!-- TODO: 合作表单或二维码 -->
+				<div class="flex flex-wrap gap-3 shrink-0">
+					<a
+						href="/contact"
+						class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+					>
+						前往联系我们
+					</a>
+					<a
+						href="/products"
+						class="inline-flex items-center gap-2 border border-slate-300 hover:border-blue-400 text-slate-700 hover:text-blue-600 text-sm font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+					>
+						浏览产品中心
+					</a>
 				</div>
 			</div>
 		</div>

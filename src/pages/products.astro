@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ViewfinderCard from '../components/ViewfinderCard.astro';
+import { products, productFaqs } from '../config/products';
+
+const flagshipProduct = products.find((p) => p.featured) ?? products[0];
+const otherProducts = products.filter((p) => p.id !== flagshipProduct.id);
+---
+
+<Layout
+	title="产品中心 - 炎想科技"
+	description="炎想科技工业软件与 AI 视觉产品：涂装生产计划自动生成系统、AI 标注训练推理一体平台、工业视觉检测套件、EOL 采集插件与 FMS 管理系统。"
+>
+	<!-- 页面标题 Hero -->
+	<section class="relative overflow-hidden bg-gradient-to-br from-blue-950 via-indigo-950 to-slate-900 text-white py-16 lg:py-24">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
+			<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-200 border border-blue-400/30">
+				Products &amp; Software
+			</span>
+			<h1 class="mt-4 text-3xl lg:text-5xl font-bold tracking-tight">产品中心</h1>
+			<p class="mt-4 text-lg text-blue-100/80 max-w-2xl leading-relaxed">
+				面向智能制造的标准化软件与工业视觉组件，覆盖从产线感知采集、AI 视觉检测到自动排产决策的核心环节。
+			</p>
+		</div>
+	</section>
+
+	<!-- 旗舰软件聚焦（预留独立软件入口） -->
+	<section id={flagshipProduct.id} class="scroll-mt-24 py-16 lg:py-20 bg-white">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<div class="flex items-center gap-2 text-sm font-medium text-blue-600 mb-3">
+				<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+				核心推荐软件
+			</div>
+
+			<ViewfinderCard class="border border-blue-200 rounded-2xl p-8 lg:p-10 bg-gradient-to-br from-slate-50 via-white to-blue-50/40 shadow-sm">
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+					<div class="lg:col-span-7">
+						<div class="flex flex-wrap items-center gap-2.5">
+							<span class="px-2.5 py-1 text-xs font-medium rounded-md bg-blue-100 text-blue-700">
+								{flagshipProduct.category}
+							</span>
+							<span class="px-2.5 py-1 text-xs font-medium rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+								在线软件入口预留 · 支持体验咨询
+							</span>
+						</div>
+
+						<h2 class="mt-4 text-2xl lg:text-3xl font-bold text-slate-900">
+							{flagshipProduct.name}
+						</h2>
+						<p class="mt-2 text-base font-medium text-blue-700">
+							{flagshipProduct.tagline}
+						</p>
+						<p class="mt-4 text-slate-600 leading-relaxed">
+							{flagshipProduct.description}
+						</p>
+
+						<ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+							{flagshipProduct.highlights.map((item) => (
+								<li class="flex items-start gap-2.5 text-sm text-slate-700">
+									<svg class="w-4 h-4 mt-0.5 text-blue-600 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M20 6 9 17l-5-5" />
+									</svg>
+									<span>{item}</span>
+								</li>
+							))}
+						</ul>
+
+						<div class="mt-8 flex flex-wrap items-center gap-4">
+							<a
+								href={flagshipProduct.entryHref}
+								class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+							>
+								{flagshipProduct.entryLabel}
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M5 12h14" />
+									<path d="m12 5 7 7-7 7" />
+								</svg>
+							</a>
+							<a
+								href="#product-faq"
+								class="inline-flex items-center gap-2 border border-slate-300 hover:border-blue-400 text-slate-700 hover:text-blue-600 text-sm font-medium px-5 py-3 rounded-lg transition-colors duration-200"
+							>
+								了解服务模式与常见问题
+							</a>
+						</div>
+					</div>
+
+					<!-- 右侧服务模式概览卡片 -->
+					<div class="lg:col-span-5">
+						<div class="rounded-xl bg-slate-900 text-white p-6 lg:p-8 border border-slate-800">
+							<p class="text-xs uppercase tracking-wider text-blue-400 font-semibold">Flexible Access</p>
+							<h3 class="mt-2 text-lg font-semibold">灵活的使用与授权方式</h3>
+							<p class="mt-2 text-sm text-slate-400 leading-relaxed">
+								为不同规模制造企业提供低门槛验证到规模化落地的阶梯式方案：
+							</p>
+							<div class="mt-6 space-y-4">
+								<div class="p-3.5 rounded-lg bg-white/5 border border-white/10">
+									<div class="text-sm font-semibold text-white">01 · 快速体验验证</div>
+									<p class="mt-1 text-xs text-slate-300">支持免费体验次数或预约工程师演示，用真实工单快速验证排产效果。</p>
+								</div>
+								<div class="p-3.5 rounded-lg bg-white/5 border border-white/10">
+									<div class="text-sm font-semibold text-white">02 · 按次 / 按时长订阅</div>
+									<p class="mt-1 text-xs text-slate-300">轻量化在线使用，按实际排产频次或周期灵活付费，降低前期投入。</p>
+								</div>
+								<div class="p-3.5 rounded-lg bg-white/5 border border-white/10">
+									<div class="text-sm font-semibold text-white">03 · 企业私有化部署</div>
+									<p class="mt-1 text-xs text-slate-300">面向中大型工厂，提供内网独立部署及 MES / ERP 深度定制对接。</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ViewfinderCard>
+		</div>
+	</section>
+
+	<!-- 全系列产品矩阵 -->
+	<section class="py-16 lg:py-20 bg-slate-50">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<div class="max-w-2xl">
+				<h2 class="text-2xl lg:text-3xl font-bold text-slate-900">产品矩阵</h2>
+				<p class="mt-2 text-slate-500">模块化工业软件与采集平台，可独立部署，也可组合形成完整产线方案。</p>
+			</div>
+
+			<div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+				{otherProducts.map((product) => (
+					<ViewfinderCard
+						id={product.id}
+						class="scroll-mt-24 border border-slate-200 rounded-xl p-7 bg-white hover:shadow-lg hover:border-blue-200 transition-all duration-300 flex flex-col"
+					>
+						<div class="flex items-center justify-between gap-3">
+							<span class="px-2.5 py-1 text-xs font-medium rounded-md bg-blue-50 text-blue-600">
+								{product.category}
+							</span>
+							<span class="text-xs text-slate-400">{product.serviceMode}</span>
+						</div>
+
+						<h3 class="mt-4 text-xl font-semibold text-slate-900">{product.name}</h3>
+						<p class="mt-1 text-sm font-medium text-blue-600/90">{product.tagline}</p>
+						<p class="mt-3 text-sm text-slate-600 leading-relaxed">{product.description}</p>
+
+						<ul class="mt-5 space-y-2 flex-1">
+							{product.highlights.map((item) => (
+								<li class="flex items-start gap-2 text-sm text-slate-600">
+									<span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></span>
+									<span>{item}</span>
+								</li>
+							))}
+						</ul>
+
+						<div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between gap-4">
+							<a
+								href={product.entryHref}
+								class="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors duration-200"
+							>
+								{product.entryLabel}
+								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M5 12h14" />
+									<path d="m12 5 7 7-7 7" />
+								</svg>
+							</a>
+							<a
+								href="/contact"
+								class="text-sm text-slate-500 hover:text-blue-600 transition-colors duration-200"
+							>
+								咨询报价
+							</a>
+						</div>
+					</ViewfinderCard>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 产品常见问题与客服咨询引导 -->
+	<section id="product-faq" class="scroll-mt-24 py-16 lg:py-20 bg-white">
+		<div class="max-w-4xl mx-auto px-4 lg:px-8">
+			<div class="text-center">
+				<h2 class="text-2xl lg:text-3xl font-bold text-slate-900">产品问答与咨询支持</h2>
+				<p class="mt-2 text-slate-500">关于产品试用、授权模式与产线集成的常见说明</p>
+			</div>
+
+			<div class="mt-10 space-y-3">
+				{productFaqs.map((faq) => (
+					<details class="group rounded-xl border border-slate-200 bg-white px-6 py-4 open:border-blue-200 open:bg-blue-50/20 transition-colors">
+						<summary class="flex cursor-pointer items-center justify-between gap-4 font-medium text-slate-900 list-none">
+							<span>{faq.question}</span>
+							<svg
+								class="w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 group-open:rotate-180 group-open:text-blue-600"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="m6 9 6 6 6-6" />
+							</svg>
+						</summary>
+						<p class="mt-3 text-sm text-slate-600 leading-relaxed">
+							{faq.answer}
+						</p>
+					</details>
+				))}
+			</div>
+
+			<!-- 底部转化横幅 -->
+			<div class="mt-12 rounded-2xl bg-slate-900 text-white p-8 lg:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+				<div>
+					<h3 class="text-xl font-bold">需要产品演示或专属方案评估？</h3>
+					<p class="mt-2 text-sm text-slate-300">
+						联系炎想科技技术顾问，获取一对一产品讲解与免费场景可行性评估。
+					</p>
+				</div>
+				<a
+					href="/contact"
+					class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-6 py-3 rounded-lg shrink-0 transition-colors duration-200"
+				>
+					联系我们
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M5 12h14" />
+						<path d="m12 5 7 7-7 7" />
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>
