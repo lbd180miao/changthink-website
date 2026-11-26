@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ViewfinderCard from '../components/ViewfinderCard.astro';
+
+const icons: Record<string, string> = {
+	eye: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`,
+	activity: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+	'bar-chart': `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+	grid: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>`,
+};
+
+const businessAreas = [
+	{ title: '机器视觉', desc: '目标检测、缺陷检测、智能识别', icon: 'eye' },
+	{ title: '数据采集', desc: '2D/3D相机、深度相机、雷达、光色仪', icon: 'activity' },
+	{ title: '数据分析', desc: '机器学习、深度学习、数据挖掘', icon: 'bar-chart' },
+	{ title: '管理系统', desc: 'MES、设备管理、生产管理、自动排产', icon: 'grid' },
+];
+---
+
+<Layout title="炎想科技 - 工业智能解决方案" description="炎想科技专注工业智能，以计算机视觉与数据采集为核心，覆盖从感知到决策的完整链路。">
+	<!-- Hero 区域 -->
+	<section class="hero relative overflow-hidden bg-gradient-to-br from-blue-950 via-indigo-900 to-slate-900 text-white">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8 py-20 lg:py-32 relative z-10">
+			<div class="max-w-2xl">
+				<h1 class="text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+					以<span class="text-blue-400">视觉智能</span>驱动<br />工业数字化转型
+				</h1>
+				<p class="mt-4 text-lg text-blue-200/80 leading-relaxed">
+					<!-- TODO: 品牌标语待定 -->
+					从感知到决策，覆盖工业智能全链路
+				</p>
+				<div class="mt-8 flex flex-wrap gap-4">
+					<a
+						href="/solutions"
+						class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+					>
+						了解解决方案
+					</a>
+					<a
+						href="/about#contact"
+						class="inline-flex items-center border border-blue-400/30 hover:border-blue-400/60 text-blue-200 hover:text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+					>
+						联系我们
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- 装饰：取景框圆环 -->
+		<div class="hero-viewfinder" aria-hidden="true">
+			<div class="viewfinder-ring"></div>
+		</div>
+	</section>
+
+	<!-- 业务板块概览 -->
+	<section class="py-16 lg:py-24">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<div class="text-center">
+				<h2 class="text-2xl lg:text-3xl font-bold text-slate-900">业务领域</h2>
+				<p class="mt-2 text-slate-500">覆盖工业智能全链路</p>
+			</div>
+
+			<div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+				{businessAreas.map((area) => (
+					<ViewfinderCard class="border border-slate-200 rounded-xl p-6 bg-white hover:shadow-lg hover:border-blue-200 transition-all duration-300">
+						<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 text-blue-500 mb-4" set:html={icons[area.icon]} />
+						<h3 class="font-semibold text-slate-900">{area.title}</h3>
+						<p class="mt-2 text-sm text-slate-500 leading-relaxed">{area.desc}</p>
+					</ViewfinderCard>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 代表性案例 -->
+	<section class="py-16 lg:py-24 bg-slate-50">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<h2 class="text-2xl lg:text-3xl font-bold text-slate-900 text-center">典型案例</h2>
+			<!-- TODO: 案例展示 -->
+		</div>
+	</section>
+</Layout>
+
+<style scoped>
+	/* Hero 网格底纹 */
+	.hero::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+		background-size: 48px 48px;
+		pointer-events: none;
+	}
+
+	/* 取景框圆环装饰 */
+	.hero-viewfinder {
+		position: absolute;
+		right: 8%;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 320px;
+		height: 320px;
+		border: 1px solid rgba(59, 130, 246, 0.15);
+		border-radius: 50%;
+	}
+
+	.viewfinder-ring {
+		position: absolute;
+		inset: 48px;
+		border: 1px solid rgba(59, 130, 246, 0.1);
+		border-radius: 50%;
+	}
+
+	/* 十字准星 */
+	.hero-viewfinder::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(rgba(59, 130, 246, 0.12), rgba(59, 130, 246, 0.12)) no-repeat center / 1px 100%,
+			linear-gradient(90deg, rgba(59, 130, 246, 0.12), rgba(59, 130, 246, 0.12)) no-repeat center / 100% 1px;
+	}
+
+	@media (max-width: 1023px) {
+		.hero-viewfinder {
+			display: none;
+		}
+	}
+</style>

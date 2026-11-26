@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ViewfinderCard from '../../components/ViewfinderCard.astro';
+
+const capabilities = [
+	{
+		id: 'ai-platform',
+		title: 'AI 开发平台',
+		desc: '标注、训练、推理全流程一体化平台',
+		details: ['数据标注工具', '模型训练管理', '推理服务部署'],
+		demo: { href: '/tech/annotation', label: '体验在线标注' },
+	},
+	{
+		id: 'vision',
+		title: '机器视觉',
+		desc: '基于深度学习与 OpenCV 的工业视觉方案',
+		details: ['目标检测（深度学习）', '缺陷检测（OpenCV）', '海康威视 VM 集成'],
+	},
+	{
+		id: 'communication',
+		title: 'PLC / MES 通讯',
+		desc: '工业设备数据互联互通',
+		details: ['PLC 协议对接', 'MES 系统集成', '实时数据采集'],
+	},
+	{
+		id: 'acquisition',
+		title: '数据采集',
+		desc: '多源工业传感器数据采集与分析',
+		details: ['工业 2D/3D 相机', '深度相机', '雷达', '光色仪'],
+		demo: { href: '/tech/eol', label: 'EOL 项目' },
+	},
+	{
+		id: 'analysis',
+		title: '数据分析',
+		desc: '机器学习与深度学习驱动的工业数据分析',
+		details: ['机器学习建模', '深度学习分析', '数据挖掘'],
+	},
+	{
+		id: 'management',
+		title: '管理系统',
+		desc: '覆盖生产全流程的管理平台',
+		details: ['MES 制造执行', '设备管理', '生产管理', '自动排产'],
+	},
+];
+---
+
+<Layout title="技术能力 - 炎想科技" description="炎想科技技术能力：AI开发平台、机器视觉、数据采集、数据分析、管理系统，覆盖工业智能全链路。">
+	<!-- 页面标题 -->
+	<section class="py-16 lg:py-24">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<h1 class="text-3xl lg:text-4xl font-bold text-slate-900">技术能力</h1>
+			<p class="mt-3 text-lg text-slate-500 max-w-2xl">底层技术平台与核心能力，覆盖从数据采集到智能决策的完整链路。</p>
+		</div>
+	</section>
+
+	<!-- 能力卡片网格 -->
+	<section class="pb-16 lg:pb-24">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{capabilities.map((cap) => (
+					<ViewfinderCard class="border border-slate-200 rounded-xl p-6 bg-white hover:shadow-lg hover:border-blue-200 transition-all duration-300">
+						<div class="w-8 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-4"></div>
+
+						<h3 class="text-lg font-semibold text-slate-900">{cap.title}</h3>
+						<p class="mt-1.5 text-sm text-slate-500 leading-relaxed">{cap.desc}</p>
+
+						<ul class="mt-4 space-y-1.5">
+							{cap.details.map((d) => (
+								<li class="flex items-center gap-2 text-sm text-slate-600">
+									<span class="w-1 h-1 rounded-full bg-blue-400 shrink-0"></span>
+									{d}
+								</li>
+							))}
+						</ul>
+
+						{cap.demo && (
+							<a
+								href={cap.demo.href}
+								class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors duration-200"
+							>
+								{cap.demo.label}
+								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M5 12h14" />
+									<path d="m12 5 7 7-7 7" />
+								</svg>
+							</a>
+						)}
+					</ViewfinderCard>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>

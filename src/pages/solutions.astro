@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { solutionAreas } from '../config/solutions';
+---
+
+<Layout title="解决方案 - 炎想科技" description="炎想科技针对工业场景的智能化落地方案：机器视觉、数据采集、数据分析、管理系统。">
+	<!-- 页面标题 -->
+	<section class="py-16 lg:py-24">
+		<div class="max-w-7xl mx-auto px-4 lg:px-8">
+			<h1 class="text-3xl lg:text-4xl font-bold text-slate-900">解决方案</h1>
+			<p class="mt-3 text-lg text-slate-500">针对工业场景的智能化落地方案</p>
+		</div>
+	</section>
+
+	{solutionAreas.map((sol, i) => (
+		<section
+			id={sol.id}
+			class:list={[
+				i === 0 ? 'pb-16 lg:pb-24' : 'py-16 lg:py-24',
+				i % 2 === 1 && 'bg-slate-50',
+			]}
+		>
+			<div class="max-w-7xl mx-auto px-4 lg:px-8">
+				<h2 class="text-2xl font-bold text-slate-900">{sol.label}</h2>
+				<!-- TODO -->
+			</div>
+		</section>
+	))}
+</Layout>

@@ -1,0 +1,63 @@
+---
+interface Props {
+	class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+<div class:list={['viewfinder-card', className]}>
+	<span class="vf-corner vf-tl" aria-hidden="true"></span>
+	<span class="vf-corner vf-tr" aria-hidden="true"></span>
+	<span class="vf-corner vf-bl" aria-hidden="true"></span>
+	<span class="vf-corner vf-br" aria-hidden="true"></span>
+	<slot />
+</div>
+
+<style scoped>
+	.viewfinder-card {
+		position: relative;
+	}
+
+	.vf-corner {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+	.viewfinder-card:hover .vf-corner {
+		opacity: 1;
+	}
+
+	.vf-tl {
+		top: -1px;
+		left: -1px;
+		border-top: 2px solid #3b82f6;
+		border-left: 2px solid #3b82f6;
+		border-radius: 4px 0 0 0;
+	}
+
+	.vf-tr {
+		top: -1px;
+		right: -1px;
+		border-top: 2px solid #3b82f6;
+		border-right: 2px solid #3b82f6;
+		border-radius: 0 4px 0 0;
+	}
+
+	.vf-bl {
+		bottom: -1px;
+		left: -1px;
+		border-bottom: 2px solid #3b82f6;
+		border-left: 2px solid #3b82f6;
+		border-radius: 0 0 0 4px;
+	}
+
+	.vf-br {
+		bottom: -1px;
+		right: -1px;
+		border-bottom: 2px solid #3b82f6;
+		border-right: 2px solid #3b82f6;
+		border-radius: 0 0 4px 0;
+	}
+</style>
